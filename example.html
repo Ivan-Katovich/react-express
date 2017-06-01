@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Список стран</title>
+	<meta charset='utf-8'>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+<h2>Страны</h2>
+<table id="countries">
+    <tr class="tabhead"><td><p>Code</p></td><td><p>Name</p></td><td><p>Population</p></td><tr>
+</table>
+<script type="text/javascript">
+$(function(){
+    $.getJSON('countries.json', function(data) {
+            for(var i=0;i<data.length-1;i++){
+                $('#countries').append('<tr><td>' + data[i].code + '</td><td>' + data[i].name + 
+                '</td><td>' + data[i].population + '</td><tr>');
+				console.log(data[i].code + " " + data[i].name + " " + data[i].population);
+            }
+    });
+	$("#countries").css('background-color', 'silver');
+});
+</script>
+</body>
+</html>
